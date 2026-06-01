@@ -31,13 +31,20 @@ export default function AboutOverlay() {
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-50 w-full h-full overflow-y-auto md:overflow-hidden flex flex-col md:block items-center gap-6 px-4 py-28 md:px-0 md:py-0 md:pt-[15vh]"
+      className="fixed inset-0 pointer-events-none z-50 w-full h-full md:overflow-hidden flex flex-row md:block items-center md:items-stretch gap-6 md:gap-0 px-6 md:px-0 py-24 md:py-0 md:pt-[15vh] overflow-x-auto md:overflow-y-hidden snap-x snap-mandatory scrollbar-none"
       style={{
         opacity: isVisible ? 1 : 0,
         transition: "opacity 0.4s ease",
         pointerEvents: isVisible ? "auto" : "none",
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
       }}
     >
+      <style>{`
+        .scrollbar-none::-webkit-scrollbar {
+          display: none !important;
+        }
+      `}</style>
       {/* ── SVG CONNECTOR LINES ──────────────────────────────────── */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none">
         <defs>
@@ -146,7 +153,7 @@ export default function AboutOverlay() {
       {/* ── CARD 1: HEAD INFO BOX (slides in from right, delay 0.2s) ─────── */}
       <div
         id="about-head-box"
-        className="relative md:absolute pointer-events-auto w-full max-w-[320px] md:w-[300px]"
+        className="relative md:absolute pointer-events-auto w-[85vw] max-w-[320px] md:w-[300px] shrink-0 snap-center"
         style={{
           opacity: revealed ? 1 : 0,
           transform: revealed ? "translate3d(0, 0, 0)" : "translate3d(40px, 0, 0)",
@@ -182,7 +189,7 @@ export default function AboutOverlay() {
       {/* ── CARD 2: CHEST INFO BOX (slides in from left, delay 0.4s) ─────── */}
       <div
         id="about-chest-box"
-        className="relative md:absolute pointer-events-auto w-full max-w-[320px] md:w-[300px]"
+        className="relative md:absolute pointer-events-auto w-[85vw] max-w-[320px] md:w-[300px] shrink-0 snap-center"
         style={{
           opacity: revealed ? 1 : 0,
           transform: revealed ? "translate3d(0, 0, 0)" : "translate3d(-40px, 0, 0)",
@@ -218,7 +225,7 @@ export default function AboutOverlay() {
       {/* ── CARD 3: HIPS INFO BOX (slides in from right, delay 0.6s) ─────── */}
       <div
         id="about-hips-box"
-        className="relative md:absolute pointer-events-auto w-full max-w-[320px] md:w-[300px]"
+        className="relative md:absolute pointer-events-auto w-[85vw] max-w-[320px] md:w-[300px] shrink-0 snap-center"
         style={{
           opacity: revealed ? 1 : 0,
           transform: revealed ? "translate3d(0, 0, 0)" : "translate3d(40px, 0, 0)",

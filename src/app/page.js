@@ -272,18 +272,12 @@ function ContactCard() {
   return (
     <div
       style={{
-        width: "100%",
-        maxWidth: "600px", // reduced from 680px for a more compact and elegant profile
-        margin: "0 auto",
-        padding: "24px 28px", // reduced padding to shrink card size
         background: "rgba(30, 41, 59, 0.75)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
-        borderRadius: "20px", // slightly rounder corners for a modern feel
-        border: "1px solid rgba(71, 85, 105, 0.35)",
-        boxShadow: "0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
         transition: "border-color 0.4s ease, box-shadow 0.4s ease",
       }}
+      className="w-full max-w-[600px] mx-auto p-5 md:p-7 rounded-[20px] border border-slate-600/35 shadow-[0_20px_50px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.05)] transition-all duration-300"
     >
       {/* Eyebrow */}
       <p
@@ -292,10 +286,10 @@ function ContactCard() {
           fontSize: "11px",
           letterSpacing: "0.2em",
           textTransform: "uppercase",
-          marginBottom: "8px",
           fontFamily: "inherit",
           fontWeight: "700",
         }}
+        className="mb-1 md:mb-2"
       >
         04 / Contact
       </p>
@@ -304,15 +298,12 @@ function ContactCard() {
       <h2
         style={{
           color: "#f8fafc",
-          fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)", // smaller heading
-          fontWeight: "800",
-          lineHeight: 1.15,
-          marginBottom: "8px", // reduced from 20px
           background: "linear-gradient(135deg, #ffffff 30%, #818cf8 100%)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           fontFamily: "inherit",
         }}
+        className="text-xl md:text-3xl font-extrabold tracking-tight leading-snug md:leading-snug mb-1.5 md:mb-2"
       >
         {headingLine1}<br />{headingLine2}
       </h2>
@@ -320,12 +311,9 @@ function ContactCard() {
       <p
         style={{
           color: "#cbd5e1",
-          fontSize: "13px", // smaller text
-          lineHeight: 1.5,
-          marginBottom: "14px", // reduced from 24px
-          maxWidth: "480px",
           fontFamily: "inherit",
         }}
+        className="text-xs md:text-sm leading-relaxed mb-3 md:mb-4 max-w-[480px]"
       >
         {contactInfo.subtext}
       </p>
@@ -333,46 +321,42 @@ function ContactCard() {
       {/* ── SKILL PROFICIENCY TABLE (Added dynamically from portfolioData) ── */}
       <div
         style={{
-          marginTop: "16px",
-          marginBottom: "16px",
           background: "rgba(255, 255, 255, 0.03)",
-          borderRadius: "14px",
-          border: "1px solid rgba(129, 140, 248, 0.25)",
-          padding: "16px 20px",
         }}
+        className="mt-3 md:mt-4 mb-3 md:mt-4 border border-indigo-400/25 rounded-xl p-3.5 md:p-5"
       >
-        <h4 style={{ color: "#22d3ee", fontSize: "10px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.18em", marginBottom: "12px", fontFamily: "inherit" }}>
+        <h4 style={{ color: "#22d3ee", fontSize: "10px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.18em", fontFamily: "inherit" }} className="mb-2 md:mb-3">
           Technical Proficiency
         </h4>
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+        <div style={{ display: "flex", flexDirection: "column" }} className="gap-2 md:gap-3">
           {/* Languages */}
-          <div style={{ display: "flex", gap: "8px", alignItems: "flex-start", flexWrap: "wrap", fontSize: "13px" }}>
-            <span style={{ color: "#818cf8", fontWeight: "700", minWidth: "105px", padding: "3px 0" }}>Languages:</span>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", fontSize: "13px" }} className="gap-1.5 md:gap-2 items-start">
+            <span style={{ color: "#818cf8", fontWeight: "700", fontFamily: "inherit" }} className="min-w-[85px] md:min-w-[105px] py-0.5 text-xs md:text-sm">Languages:</span>
+            <div style={{ display: "flex", flexWrap: "wrap" }} className="gap-1 md:gap-1.5">
               {skillsData.languages.map((lang) => (
-                <span key={lang} style={{ color: "#f8fafc", background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(129, 140, 248, 0.35)", padding: "3px 8px", borderRadius: "6px", fontSize: "11px", fontFamily: "monospace" }}>
+                <span key={lang} style={{ color: "#f8fafc", background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(129, 140, 248, 0.35)", fontFamily: "monospace" }} className="px-2 py-0.5 rounded-md text-[10px] md:text-xs">
                   {lang}
                 </span>
               ))}
             </div>
           </div>
           {/* Tech Stack */}
-          <div style={{ display: "flex", gap: "8px", alignItems: "flex-start", flexWrap: "wrap", fontSize: "13px" }}>
-            <span style={{ color: "#818cf8", fontWeight: "700", minWidth: "105px", padding: "3px 0" }}>Technologies:</span>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", fontSize: "13px" }} className="gap-1.5 md:gap-2 items-start">
+            <span style={{ color: "#818cf8", fontWeight: "700", fontFamily: "inherit" }} className="min-w-[85px] md:min-w-[105px] py-0.5 text-xs md:text-sm">Technologies:</span>
+            <div style={{ display: "flex", flexWrap: "wrap" }} className="gap-1 md:gap-1.5">
               {skillsData.tech.map((t) => (
-                <span key={t} style={{ color: "#f8fafc", background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(129, 140, 248, 0.35)", padding: "3px 8px", borderRadius: "6px", fontSize: "11px", fontFamily: "monospace" }}>
+                <span key={t} style={{ color: "#f8fafc", background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(129, 140, 248, 0.35)", fontFamily: "monospace" }} className="px-2 py-0.5 rounded-md text-[10px] md:text-xs">
                   {t}
                 </span>
               ))}
             </div>
           </div>
           {/* Databases */}
-          <div style={{ display: "flex", gap: "8px", alignItems: "flex-start", flexWrap: "wrap", fontSize: "13px" }}>
-            <span style={{ color: "#818cf8", fontWeight: "700", minWidth: "105px", padding: "3px 0" }}>Databases:</span>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", fontSize: "13px" }} className="gap-1.5 md:gap-2 items-start">
+            <span style={{ color: "#818cf8", fontWeight: "700", fontFamily: "inherit" }} className="min-w-[85px] md:min-w-[105px] py-0.5 text-xs md:text-sm">Databases:</span>
+            <div style={{ display: "flex", flexWrap: "wrap" }} className="gap-1 md:gap-1.5">
               {skillsData.databases.map((db) => (
-                <span key={db} style={{ color: "#f8fafc", background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(129, 140, 248, 0.35)", padding: "3px 8px", borderRadius: "6px", fontSize: "11px", fontFamily: "monospace" }}>
+                <span key={db} style={{ color: "#f8fafc", background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(129, 140, 248, 0.35)", fontFamily: "monospace" }} className="px-2 py-0.5 rounded-md text-[10px] md:text-xs">
                   {db}
                 </span>
               ))}
@@ -382,37 +366,20 @@ function ContactCard() {
       </div>
 
       {/* CTA row */}
-      <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "14px" }}>
+      <div style={{ display: "flex", flexWrap: "wrap" }} className="gap-2 md:gap-2.5 mt-3 md:mt-4">
         <a
           href={`https://mail.google.com/mail/?view=cm&fs=1&to=${contactInfo.email}`}
           target="_blank"
           rel="noopener noreferrer"
           id="contact-email-btn"
           style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "6px",
-            padding: "10px 20px",
             background: "linear-gradient(135deg, #818cf8, #22d3ee)",
             color: "#0f172a",
-            fontWeight: "700",
-            fontSize: "13px",
-            borderRadius: "10px",
-            textDecoration: "none",
-            boxShadow: "0 4px 15px rgba(34, 211, 238, 0.2)",
-            transition: "transform 0.2s ease, box-shadow 0.2s ease",
             fontFamily: "inherit",
             pointerEvents: "auto",
             cursor: "pointer",
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform   = "translateY(-2px)";
-            e.currentTarget.style.boxShadow   = "0 6px 20px rgba(34, 211, 238, 0.35)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform   = "";
-            e.currentTarget.style.boxShadow   = "0 4px 15px rgba(34, 211, 238, 0.2)";
-          }}
+          className="inline-flex items-center gap-1.5 px-4 md:px-5 py-2 md:py-2.5 font-bold text-xs md:text-sm rounded-lg shadow-[0_4px_15px_rgba(34,211,238,0.2)] hover:scale-[1.02] hover:shadow-[0_6px_20px_rgba(34,211,238,0.35)] transition-all duration-200"
         >
           <EnvelopeIcon />
           Send a message
@@ -424,34 +391,14 @@ function ContactCard() {
           rel="noopener noreferrer"
           id="contact-github-btn"
           style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "6px",
-            padding: "10px 20px",
             background: "rgba(255, 255, 255, 0.05)",
             border: "1px solid rgba(71, 85, 105, 0.4)",
             color: "#f8fafc",
-            fontWeight: "600",
-            fontSize: "13px",
-            borderRadius: "10px",
-            textDecoration: "none",
-            backdropFilter: "blur(8px)",
-            WebkitBackdropFilter: "blur(8px)",
-            transition: "background 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
             fontFamily: "inherit",
             pointerEvents: "auto",
             cursor: "pointer",
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background    = "rgba(255, 255, 255, 0.09)";
-            e.currentTarget.style.borderColor   = "#22d3ee";
-            e.currentTarget.style.transform     = "translateY(-2px)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background    = "rgba(255, 255, 255, 0.05)";
-            e.currentTarget.style.borderColor   = "rgba(71, 85, 105, 0.4)";
-            e.currentTarget.style.transform     = "";
-          }}
+          className="inline-flex items-center gap-1.5 px-4 md:px-5 py-2 md:py-2.5 font-semibold text-xs md:text-sm rounded-lg backdrop-blur-md hover:bg-white/[0.09] hover:border-[#22d3ee] hover:scale-[1.02] transition-all duration-200"
         >
           <GithubIcon />
           GitHub
@@ -464,8 +411,8 @@ function ContactCard() {
           width: "100%",
           height: "1px",
           background: "linear-gradient(to right, rgba(129, 140, 248, 0.35), transparent)",
-          margin: "16px 0 12px 0",
         }}
+        className="my-3.5 md:my-4"
       />
 
       {/* Footer links */}
@@ -475,20 +422,20 @@ function ContactCard() {
           alignItems: "center",
           justifyContent: "space-between",
           flexWrap: "wrap",
-          gap: "10px",
         }}
+        className="gap-2.5 md:gap-3"
       >
         <span
           style={{
             color: "rgba(248, 250, 252, 0.4)",
-            fontSize: "11px",
             fontFamily: "inherit",
           }}
+          className="text-[10px] md:text-xs"
         >
           {"\u00A9"} 2026 {personalInfo.name}. Built with Three.js &amp; Next.js.
         </span>
 
-        <div style={{ display: "flex", gap: "16px" }}>
+        <div style={{ display: "flex" }} className="gap-3.5 md:gap-4">
           {[
             { label: "LinkedIn", href: contactInfo.linkedin },
             { label: "Twitter",  href: contactInfo.twitter },
@@ -501,13 +448,11 @@ function ContactCard() {
               rel="noopener noreferrer"
               style={{
                 color: "rgba(248, 250, 252, 0.6)",
-                fontSize: "11px",
                 textDecoration: "none",
                 fontFamily: "inherit",
                 transition: "color 0.2s ease",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = "#22d3ee"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(248, 250, 252, 0.6)"; }}
+              className="text-[10px] md:text-xs hover:text-[#22d3ee]"
             >
               {label}
             </a>

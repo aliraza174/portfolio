@@ -23,9 +23,11 @@ export default function ProjectSection() {
 
   const isVisible = phase === "projects";
 
-  // Prevent scroll events from propagating to the main window, stopping scroll snapping from hijacking card list scrolling
+  // Prevent scroll events from propagating to the main window on desktop, stopping scroll snapping from hijacking card list scrolling
   const stopScrollPropagation = (e) => {
-    e.stopPropagation();
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      e.stopPropagation();
+    }
   };
 
   return (
@@ -38,7 +40,7 @@ export default function ProjectSection() {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 w-full h-full px-6 md:px-24 items-center">
         {/* ── LEFT COLUMN: SCROLL-BASED CARD SLIDER ────────────────── */}
-        <div style={{ paddingTop: "65px", paddingBottom: "20px" }} className="flex flex-col justify-center h-full max-w-xl pointer-events-auto relative">
+        <div style={{ paddingTop: "65px", paddingBottom: "20px" }} className="flex flex-col justify-center h-full max-w-xl pointer-events-auto relative w-full">
           {/* Header */}
           <div
             style={{
@@ -60,9 +62,16 @@ export default function ProjectSection() {
               transform: isVisible ? "translate3d(0, 0, 0)" : "translate3d(-100%, 0, 0)",
               opacity: isVisible ? 1 : 0,
               transition: "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
             }}
-            className="space-y-6 max-h-[72vh] overflow-y-auto -mx-4 px-4 py-6 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent"
+            className="flex flex-row md:flex-col gap-4 md:space-y-6 md:gap-0 overflow-x-auto md:overflow-y-auto max-h-[60vh] md:max-h-[72vh] -mx-4 px-4 py-6 scrollbar-none md:scrollbar-thin md:scrollbar-thumb-slate-700 md:scrollbar-track-transparent snap-x snap-mandatory md:snap-none w-[calc(100%+2rem)] md:w-auto"
           >
+            <style>{`
+              .scrollbar-none::-webkit-scrollbar {
+                display: none !important;
+              }
+            `}</style>
             {projects.map((project, idx) => (
               <div
                 key={idx}
@@ -73,7 +82,7 @@ export default function ProjectSection() {
                   WebkitBackdropFilter: "blur(10px)",
                   cursor: "pointer",
                 }}
-                className={`border ${project.color} rounded-2xl p-6 hover:scale-[1.025] hover:border-[#22d3ee]/80 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)] transition-all duration-300 group relative`}
+                className={`border ${project.color} rounded-2xl p-6 hover:scale-[1.025] hover:border-[#22d3ee]/80 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)] transition-all duration-300 group relative shrink-0 w-[85vw] md:w-auto snap-center`}
               >
                 {/* Modern CTA indicator */}
                 <div className="absolute top-6 right-6 text-[#22d3ee] text-[10px] font-mono tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
